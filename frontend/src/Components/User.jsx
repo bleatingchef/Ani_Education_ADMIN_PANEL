@@ -49,10 +49,10 @@ const User = () => {
 
   return (
     <>
-      <div className="text-center mx-auto pt-8">
+      {/* <div className="text-center mx-auto pt-8">
         <h1 className='inline-block text-cyan-500 text-3xl md:text-7xl'>Enquiries</h1>
-      </div>
-      <div className="flex pt-20 justify-center min-h-screen">
+      </div> */}
+      <div className="flex pt-20 bg-gradient-to-r from-purple-800 to-blue-800 justify-center min-h-screen">
         {/* Main Content */}
         <div className="w-1/2 p-4 text-center">
           <table className="min-w-full outline outline-cyan-500 rounded-xl shadow shadow-lg shadow-cyan-500">

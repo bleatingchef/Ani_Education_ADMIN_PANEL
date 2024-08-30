@@ -81,10 +81,10 @@ const Students = () => {
 
     return (
         <div className='bg-white'>
-            <div className="text-center mx-auto pl-40 pt-8 bg-white">
+            {/* <div className="text-center bg-gradient-to-r from-purple-800 to-blue-800 mx-auto pl-40 pt-8 bg-white">
                 <h1 className='inline-block text-blue-500 text-3xl md:text-7xl'>Students</h1>
-            </div>
-            <div className="flex justify-center items-center min-h-screen bg-white">
+            </div> */}
+            <div className="flex bg-gradient-to-r from-purple-800 to-blue-800 justify-center items-center min-h-screen bg-white">
                 <div className="container mx-auto p-10" style={{ marginLeft: '320px' }}>
                     <div className="mb-4">
                         <button

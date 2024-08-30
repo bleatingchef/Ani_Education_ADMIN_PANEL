@@ -102,10 +102,10 @@ const LawyerProfile = ({ lawyer }) => (
 
 const Attorneys = () => (
     <>
-    <div className="text-center bg-white mx-auto pl-24 pt-8">
+    {/* <div className="text-center bg-white mx-auto pl-24 pt-8">
             <h1 className='inline-block text-cyan-500 text-3xl md:text-7xl'>Faculty</h1>
-        </div>
-  <div className="min-h-screen bg-white flex pl-36 flex-col items-center p-8">
+        </div> */}
+  <div className="min-h-screen bg-gradient-to-r from-purple-800 to-blue-800 flex pl-36 flex-col items-center p-8">
     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
       {lawyers.map((lawyer, index) => (
         <LawyerProfile key={index} lawyer={lawyer} />

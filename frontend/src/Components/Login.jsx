@@ -46,14 +46,14 @@ const Login = () => {
     <>
       {/* <ToastContainer/> */}
       <div className="min-h-screen flex items-center justify-end pr-48 md:justify-end md:pl-80 relative bg-cover bg-center bg-opacity-80" style={{ backgroundImage: `url(${bg})` }}>
-        <div className="bg-blue-950 p-8 md:p-16 bg-opacity- rounded-3xl border-2 border-blue-800 shadow-xl shadow-blue-800 max-w-md w-full z-10 relative">
+        <div className="bg-gray-300 p-8 md:p-20 bg-opacity-70 rounded-3xl border-2 border-blue-800 shadow-2xl shadow-slate-950 max-w-md w-full z-10 relative">
           <img src={logo} className='pb-8 mx-auto' alt="" style={{ width: '150px', height: 'auto' }} />
           <form>
             <div className="mb-4">
               <label className="block text-yellow-100 text-sm font-bold mb-2" htmlFor="email">
               </label>
               <input
-                className="shadow appearance-none border-2 border-blue-500 bg-black rounded-3xl w-full py-2 px-3 text-blue-500 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border-2 border-black bg-gray-200 rounded-3xl w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                 value={form.email}
                 onChange={handleChange}
                 name='email'
@@ -66,7 +66,7 @@ const Login = () => {
               <label className="block text-yellow-100 text-sm font-bold mt-10 mb-2" htmlFor="password">
               </label>
               <input
-                className="shadow appearance-none border-2 border-blue-500 bg-black rounded-3xl w-full py-2 px-3 text-blue-500 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none border-2 border-black bg-gray-300 rounded-3xl w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                 value={form.password}
                 onChange={handleChange}
                 name='password'
@@ -77,7 +77,7 @@ const Login = () => {
             </div>
             <div className="flex items-center justify-between">
               <button
-                className="bg-white hover:bg-blue-500 text-black mx-auto mb-5 font-bold py-2 px-10 rounded-3xl focus:outline-none focus:shadow-outline"
+                className="bg-slate-950 hover:bg-white text-white hover:text-slate-950 mx-auto mb-5 font-bold py-2 px-10 rounded-3xl focus:outline-none focus:shadow-outline"
                 type="button"
                 onClick={userLogin}
               >
@@ -85,7 +85,7 @@ const Login = () => {
               </button>
             </div>
             <a
-              className="block text-center font-bold text-sm text-blue-500 hover:text-white"
+              className="block text-center font-bold text-sm text-slate-950"
               href="#"
             >
               Forgot Password?

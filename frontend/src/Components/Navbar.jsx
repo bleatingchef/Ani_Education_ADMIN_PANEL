@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <div className=" ">
       {/* Fixed Sidebar */}
-      <div className={`fixed outline outline-cyan-500 shadow-xl shadow-cyan-500 top-1 bottom-1 rounded-r-2xl inset-y-0 left-0 bg-blue-800 z-40 p-4 bg-opacity-90 transition-all duration-300 transform ${sidebarExpanded ? 'translate-x-0 w-80' : 'translate-x-[0%] w-32'}`}>
+      <div className={`fixed outline outline-cyan-500 shadow-xl shadow-cyan-500 top-1 bottom-1 rounded-r-2xl inset-y-0 left-0 bg-gradient-to-r from-blue-800 to-purple-800 z-40 p-4 bg-opacity-90 transition-all duration-300 transform ${sidebarExpanded ? 'translate-x-0 w-80' : 'translate-x-[0%] w-32'}`}>
         <div className="flex flex-col items-center">
           <button
             className="btn btn-ghost self-center mb-4"
@@ -87,7 +87,7 @@ const Navbar = () => {
           <li className="flex flex-col items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer" onClick={() => { navigate('/cases'); toggleSidebar(); }}>
             <div className="flex items-center" onClick={toggleCasesDropdown}>
               <FaFolder className="h-6 w-6 mr-2  text-white" />
-              {sidebarExpanded && <span className='text-white'>Students</span>}
+              {sidebarExpanded && <span className='text-white'>Eligibility</span>}
               {/* {sidebarExpanded && <FaFolderOpen className={`ml-auto ${casesDropdownOpen ? '' : 'hidden'}`} />} */}
             </div>
           </li>
@@ -97,7 +97,7 @@ const Navbar = () => {
           </li> */}
           <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer " onClick={() => { navigateToMembership(); toggleSidebar(); }}>
             <FaGavel className="h-6 w-6 mr-2 text-white" />
-            {sidebarExpanded && <span className='text-white'>Faculty</span>}
+            {sidebarExpanded && <span className='text-white'>Loan Application</span>}
           </li>
           <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer " onClick={() => { navigateToUser(); toggleSidebar(); }}>
             <FiUsers className="h-6 w-6 mr-2 text-white" />

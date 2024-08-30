@@ -1,132 +1,205 @@
 import React, { useState } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import './style.css'; // Make sure to import the styles for the circular chart
-import GrowthTrainers from './GrowthTrainers';
-import Calender from './AddStudentForm';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
+} from 'recharts';
 
-// Updated data with settled field
-const data = [
-  { month: 'Jan', surveys: 5 },
-  { month: 'Feb', surveys: 6 },
-  { month: 'Mar', surveys: 5 },
-  { month: 'Apr', surveys: 6 },
-  { month: 'May', surveys: 7 },
-  { month: 'Jun', surveys: 5 },
-  { month: 'Jul', surveys: 6 },
-  { month: 'Aug', surveys: 5 },
-  { month: 'Sep', surveys: 6 },
-  { month: 'Oct', surveys: 7 },
-  { month: 'Nov', surveys: 5 },
-  { month: 'Dec', surveys: 6 },
+const monthlyData = [
+  { day: 'SUN', income: 400, expense: 240 },
+  { day: 'MON', income: 300, expense: 139 },
+  { day: 'TUE', income: 200, expense: 980 },
+  { day: 'WED', income: 278, expense: 390 },
+  { day: 'THU', income: 189, expense: 480 },
+  { day: 'FRI', income: 239, expense: 380 },
+  { day: 'SAT', income: 349, expense: 430 },
+];
+
+const weeklyData = [
+  { day: 'SUN', income: 150, expense: 100 },
+  { day: 'MON', income: 200, expense: 140 },
+  { day: 'TUE', income: 180, expense: 130 },
+  { day: 'WED', income: 250, expense: 160 },
+  { day: 'THU', income: 220, expense: 150 },
+  { day: 'FRI', income: 270, expense: 180 },
+  { day: 'SAT', income: 300, expense: 210 },
+];
+
+const pieData = [
+  { name: 'Pink', value: 400 },
+  { name: 'Yellow', value: 300 },
+  { name: 'Blue', value: 300 },
+];
+
+const barData = [
+  { day: 'SUN', balance: 20 },
+  { day: 'MON', balance: 50 },
+  { day: 'TUE', balance: 30 },
+  { day: 'WED', balance: 70 },
+  { day: 'THU', balance: 60 },
+  { day: 'FRI', balance: 90 },
+  { day: 'SAT', balance: 40 },
 ];
 
 const Dashboard = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const [isMonthly, setIsMonthly] = useState(true);
+  const COLORS = ['#FF0080', '#FFCD00', '#00BFFF'];
 
   return (
-    <div className='bg-white'>
-      <div className="text-center md:ml-24 pb-2 pt-8">
-        <h1 className='inline-block text-blue-500 text-3xl md:text-7xl'>Dashboard</h1>
-      </div>
-
-      <div className="p-8 min-h-screen">
-        <div className="flex flex-col md:flex-row justify-between">
-          <div className="md:ml-80 pt-20 w-full md:w-2/6 mb-8 md:mb-0 md:mr-8 bg-slate-950 shadow shadow-xl shadow-blue-500 p-6 rounded-lg">
-            <h2 className="text-xl text-white font-semibold mb-4">Students</h2>
-            <div className="flex justify-between mb-6">
-              <div className="text-center">
-                <div className="relative inline-block w-24 h-24">
-                  <svg viewBox="0 0 36 36" className="circular-chart blue">
-                    <path
-                      className="circle-bg"
-                      d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                    <path
-                      className="circle"
-                      strokeDasharray="70, 100"
-                      d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-2xl text-white font-semibold">70%</span>
-                  </div>
-                </div>
-                <p className="mt-2 text-white">Total Students</p>
-              </div>
-              <div className="text-center">
-                <div className="relative inline-block w-24 h-24">
-                  <svg viewBox="0 0 36 36" className="circular-chart green">
-                    <path
-                      className="circle-bg"
-                      d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                    <path
-                      className="circle"
-                      strokeDasharray="85, 100"
-                      d="M18 2.0845
-                        a 15.9155 15.9155 0 0 1 0 31.831
-                        a 15.9155 15.9155 0 0 1 0 -31.831"
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-2xl text-white font-semibold">85%</span>
-                  </div>
-                </div>
-                <p className="mt-2 text-white">New Students</p>
-              </div>
-            </div>
-            <div>
-              <div className="flex text-white justify-between mb-2">
-                <span>Total Students</span>
-                <span>70%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-                <div className="bg-blue-500 h-2 rounded-full" style={{ width: '70%' }}></div>
-              </div>
-              <div className="flex text-white justify-between mb-2">
-                <span>New Students</span>
-                <span>90%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-green-500 h-2 rounded-full" style={{ width: '90%' }}></div>
-              </div>
-            </div>
+    <div className="p-8 pl-96 text-white bg-gradient-to-r from-purple-800 to-blue-800 min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <div className="bg-purple-900 rounded-lg p-6">
+          <h3 className="text-xl font-bold mb-4">Pie Chart</h3>
+          <ResponsiveContainer width="100%" height={200}>
+            <PieChart>
+              <Pie
+                data={pieData}
+                cx="50%"
+                cy="50%"
+                outerRadius={60}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {pieData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+            </PieChart>
+          </ResponsiveContainer>
+          <div className="flex justify-around mt-4">
+            <span className="text-pink-500">Pink</span>
+            <span className="text-yellow-500">Yellow</span>
+            <span className="text-blue-500">Blue</span>
           </div>
-
-          <div className="w-full md:w-4/6 md:mr-10 bg-slate-950 text-black pt-10 pb-20 pl-5 rounded-lg shadow shadow-xl shadow-blue-500">
-            <h2 className="text-xl text-white font-semibold mb-4">University Survey</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="colorSettled" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8} />
-                    <stop offset="95%" stopColor="#82ca9d" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="month" />
-                <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
-                <Tooltip />
-                <Area type="monotone" dataKey="surveys" stroke="#82ca9d" fillOpacity={1} fill="url(#colorSettled)" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-          
         </div>
-
-        <GrowthTrainers />
+        
+        <div className="bg-purple-900 rounded-lg p-6">
+          <h3 className="text-xl font-bold mb-4">Your Balance</h3>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={barData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="balance" fill="#FFB800" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        
+        <div className="bg-purple-900 rounded-lg p-6">
+          <h3 className="text-xl font-bold mb-4">Admission Summary</h3>
+          <div className="text-2xl font-bold">$4,563</div>
+          <div className="text-green-400 text-sm">+1.6% than last week</div>
+          <ResponsiveContainer width="100%" height={200}>
+            <BarChart data={weeklyData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="income" fill="#00BFFF" />
+              <Bar dataKey="expense" fill="#FF0080" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
-      {/* <Calender /> */}
+      
+      <div className="bg-purple-900 rounded-lg p-6 mb-6">
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl font-bold">Your Balance Summary</h2>
+          <div className="flex space-x-2">
+            <button
+              onClick={() => setIsMonthly(true)}
+              className={`px-4 py-2 rounded-lg ${isMonthly ? 'bg-blue-600' : 'bg-transparent border border-white'}`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setIsMonthly(false)}
+              className={`px-4 py-2 rounded-lg ${!isMonthly ? 'bg-blue-600' : 'bg-transparent border border-white'}`}
+            >
+              Weekly
+            </button>
+          </div>
+        </div>
+        <div className="flex justify-between mt-6">
+          <div className="text-center">
+            <p className="text-sm">Income</p>
+            <p className="text-2xl font-bold">$459,234.08</p>
+          </div>
+          <div className="text-center">
+            <p className="text-sm">Expense</p>
+            <p className="text-2xl font-bold">$23,456</p>
+          </div>
+        </div>
+        <div className="mt-8">
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={isMonthly ? monthlyData : weeklyData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="day" />
+              <YAxis />
+              <Tooltip />
+              <Line type="monotone" dataKey="income" stroke="#8884d8" />
+              <Line type="monotone" dataKey="expense" stroke="#82ca9d" />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-purple-900 p-6 rounded-lg text-center">
+          <h3 className="text-2xl font-bold">$19,522</h3>
+          <p className="text-sm">Expense</p>
+          <p className="text-xs">+0.5% than last month</p>
+        </div>
+        <div className="bg-purple-900 p-6 rounded-lg text-center">
+          <h3 className="text-2xl font-bold">$45,234</h3>
+          <p className="text-sm">Income</p>
+          <p className="text-xs">-2% than last month</p>
+        </div>
+        <div className="bg-purple-900 p-6 rounded-lg text-center">
+          <h3 className="text-2xl font-bold">$984</h3>
+          <p className="text-sm">Transactions</p>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <div className="bg-purple-900 rounded-lg p-6">
+          <h3 className="text-xl font-bold mb-4">Earning Categories</h3>
+          <div className="flex justify-between mb-2">
+            <span>#investment</span>
+            <span>$89.24</span>
+          </div>
+          <div className="w-full bg-purple-700 h-2 rounded-full mb-4">
+            <div className="bg-pink-500 h-2 rounded-full" style={{ width: '70%' }}></div>
+          </div>
+          <div className="flex justify-between mb-2">
+            <span>#transfer</span>
+            <span>$441.45</span>
+          </div>
+          <div className="w-full bg-purple-700 h-2 rounded-full">
+            <div className="bg-blue-500 h-2 rounded-full" style={{ width: '40%' }}></div>
+          </div>
+        </div>
+        
+        {/* <div className="bg-purple-900 rounded-lg p-6">
+          <h3 className="text-xl font-bold mb-4">Others tag</h3>
+          <div className="flex flex-wrap gap-2">
+            <span className="bg-purple-700 px-3 py-1 rounded-full">#teamwork</span>
+            <span className="bg-purple-700 px-3 py-1 rounded-full">#design</span>
+            <span className="bg-purple-700 px-3 py-1 rounded-full">#projectmanagement</span>
+            <span className="bg-purple-700 px-3 py-1 rounded-full">16+</span>
+          </div>
+        </div> */}
+      </div>
     </div>
   );
 };
