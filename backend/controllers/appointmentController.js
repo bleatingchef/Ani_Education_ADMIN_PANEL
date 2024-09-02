@@ -2,13 +2,13 @@ import asyncHandler from "express-async-handler";
 import {User_op} from "../models/appointmentModel.js"
 
 const user =asyncHandler(async(req,res)=>{
-    const {name,phone,email,comment}=req.body
-    if(!name||!phone||!email||!comment){
+    const {name,phone,amount}=req.body
+    if(!name||!phone||!amount){
         res.status(400)
         throw new Error("Please fill all the fields");
     }
 
-    const userExist=await User_op.findOne({email})
+    const userExist=await User_op.findOne({name})
 
     if (userExist){
         res.status(400);
@@ -18,8 +18,7 @@ const user =asyncHandler(async(req,res)=>{
     const form= await User_op.create({
         name:name,
         phone:phone,
-        email:email,
-        comment:comment,
+        amount:amount,
     });
     res.status(201).json(form);
 })
@@ -29,21 +28,21 @@ const user =asyncHandler(async(req,res)=>{
     })
 
     const deleteUser=asyncHandler(async(req,res)=>{
-        const {email}=req.body
+        const {name}=req.body
 
-        if(!email){
+        if(!name){
             res.status(400)
-            throw new error("Please provide an Email")
+            throw new error("Please provide a Name")
         }
 
-        const user = await User_op.findOneAndDelete({email});
+        const user = await User_op.findOneAndDelete({name});
 
         if(!user){
             res.status(400)
-            throw new Error("Contact is not found");
+            throw new Error("Name is not found");
         }
 
-        res.status(200).json({message:"Contact deleted successfully"})
+        res.status(200).json({message:"Field deleted successfully"})
     });
      
 export {user,getUser,deleteUser};

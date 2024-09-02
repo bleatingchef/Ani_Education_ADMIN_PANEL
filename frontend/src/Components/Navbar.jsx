@@ -47,7 +47,7 @@ const Navbar = () => {
   return (
     <div className=" ">
       {/* Fixed Sidebar */}
-      <div className={`fixed outline outline-cyan-500 shadow-xl shadow-cyan-500 top-1 bottom-1 rounded-r-2xl inset-y-0 left-0 bg-gradient-to-r from-blue-800 to-purple-800 z-40 p-4 bg-opacity-90 transition-all duration-300 transform ${sidebarExpanded ? 'translate-x-0 w-80' : 'translate-x-[0%] w-32'}`}>
+      <div className={`fixed   rounded-r inset-y-0 left-0  z-40 p-4 bg-opacity-90 transition-all duration-300 transform ${sidebarExpanded ? 'translate-x-0 w-80' : 'translate-x-[0%] w-32'}`}>
         <div className="flex flex-col items-center">
           <button
             className="btn btn-ghost self-center mb-4"

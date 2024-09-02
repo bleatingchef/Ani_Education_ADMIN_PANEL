@@ -61,8 +61,8 @@ const User = () => {
                 <th className="py-5 px-4">#</th>
                 <th className="py-2 px-4">Name</th>
                 <th className="py-2 px-4">Phone Number</th>
-                <th className="py-2 px-4">Email</th>
-                <th className="py-2 px-4">Message</th>
+                <th className="py-2 px-4">Amount</th>
+                {/* <th className="py-2 px-4">Message</th> */}
                 <th className="py-2 px-4">Actions</th>
               </tr>
             </thead>
@@ -72,8 +72,8 @@ const User = () => {
                   <td className="py-5 px-4 text-center">{startIndex + index + 1}</td>
                   <td className="py-2 px-4">{data.name}</td>
                   <td className="py-2 px-4">{data.phone}</td>
-                  <td className="py-2 px-4">{data.email}</td>
-                  <td className="py-2 px-4 text-wrapped">{data.comment}</td>
+                  <td className="py-2 px-4">{data.amount}</td>
+                  {/* <td className="py-2 px-4 text-wrapped">{data.comment}</td> */}
                   <td className="py-2 px-4 text-center">
                     <button 
                       onClick={() => handleDelete(data.email)} 
