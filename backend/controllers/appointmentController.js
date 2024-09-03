@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import {User_op} from "../models/appointmentModel.js"
+import  Loan  from "../models/loan.js";
 
 const user =asyncHandler(async(req,res)=>{
     const {name,phone,amount}=req.body
@@ -8,14 +8,14 @@ const user =asyncHandler(async(req,res)=>{
         throw new Error("Please fill all the fields");
     }
 
-    const userExist=await User_op.findOne({name})
+    const userExist=await Loan.findOne({pan})
 
     if (userExist){
         res.status(400);
         throw new Error("User already exists.");
     }
 
-    const form= await User_op.create({
+    const form= await Loan.create({
         name:name,
         phone:phone,
         amount:amount,
@@ -23,7 +23,7 @@ const user =asyncHandler(async(req,res)=>{
     res.status(201).json(form);
 })
     const getUser=asyncHandler(async(req,res)=>{
-        const user=await User_op.find();
+        const user=await Loan.find();
         res.status(200).json(user)
     })
 
@@ -35,7 +35,7 @@ const user =asyncHandler(async(req,res)=>{
             throw new error("Please provide a Name")
         }
 
-        const user = await User_op.findOneAndDelete({name});
+        const user = await Loan.findOneAndDelete({pan});
 
         if(!user){
             res.status(400)

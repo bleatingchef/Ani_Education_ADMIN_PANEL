@@ -22,5 +22,9 @@ const details = asyncHandler(async (req,res)=>{
     });
     res.status(201).json(form);
 })
+const getDetails = asyncHandler(async(req,res)=>{
+    const details = await Details.find()
+    res.status(201).json(details)  
+})
 
-export {details};
+export {details,getDetails};

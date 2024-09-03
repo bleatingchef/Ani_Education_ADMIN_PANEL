@@ -9,7 +9,7 @@ import AdminProfile from './Components/AdminProfile';
 import Dashboard from './Components/Dashboard';
 import './index.css';
 import Cases from './Components/Cases';
-import Attorneys from './Components/Attorneys';
+import Attorneys from './Components/Applications';
 import User from './Components/User';
 // import AddStudentForm from './Components/AddStudentForm';
 

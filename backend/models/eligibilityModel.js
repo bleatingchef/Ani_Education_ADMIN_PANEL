@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const loanSchema = new mongoose.Schema({
+const eligibilitySchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please add a name"],
@@ -29,6 +29,4 @@ const loanSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// export  const Loan= mongoose.model('Loan', loanSchema);
-const Loan = mongoose.model('Loan', loanSchema);
-export default Loan;
+export const EligibilityCheck= mongoose.model('EligibilityCheck', eligibilitySchema);

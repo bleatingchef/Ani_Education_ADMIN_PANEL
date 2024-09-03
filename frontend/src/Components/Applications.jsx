@@ -11,7 +11,7 @@ const User = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/moreDetails/getDetails`)
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/loan/getLoan`)
       .then(response => {
         setData(response.data);
         toast.success("Data fetched successfully");
@@ -22,19 +22,19 @@ const User = () => {
       });
   }, []);
 
-  // const handleDelete = (email) => {
-  //   axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/delete/deleteUser`, {
-  //     data: { email }
-  //   })
-  //     .then(response => {
-  //       setData(data.filter(contact => contact.email !== email));
-  //       toast.success("Contact deleted successfully");
-  //     })
-  //     .catch(error => {
-  //       console.error('Error deleting item:', error);
-  //       toast.error("Error deleting contact");
-  //     });
-  // };
+  const handleDelete = (pan) => {
+    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/deleteloan/deleteloan`, {
+      data: { pan }
+    })
+      .then(response => {
+        setData(data.filter(contact => contact.pan !== pan));
+        toast.success("Contact deleted successfully");
+      })
+      .catch(error => {
+        console.error('Error deleting item:', error);
+        toast.error("Error deleting contact");
+      });
+  };
 
   const handlePreviousPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
@@ -50,7 +50,7 @@ const User = () => {
   return (
     <>
       <div className="text-center bg-gradient-to-r from-purple-800 to-blue-800 mx-auto pt-8">
-        <h1 className='inline-block text-cyan-500 text-3xl md:text-7xl'>Enquiries</h1>
+        <h1 className='inline-block text-cyan-500 text-3xl md:text-7xl'>Application</h1>
       </div>
       <div className="flex pt-20 bg-gradient-to-r from-purple-800 to-blue-800 justify-center min-h-screen">
         {/* Main Content */}
@@ -61,7 +61,8 @@ const User = () => {
                 <th className="py-5 px-4">#</th>
                 <th className="py-2 px-4">Name</th>
                 <th className="py-2 px-4">Phone Number</th>
-                <th className="py-2 px-4">Amount</th>
+                <th className="py-2 px-4">PAN Number</th>
+                <th className="py-2 px-4">Email</th>
                 {/* <th className="py-2 px-4">Message</th> */}
                 {/* <th className="py-2 px-4">Actions</th> */}
               </tr>
@@ -72,7 +73,8 @@ const User = () => {
                   <td className="py-5 px-4 text-center">{startIndex + index + 1}</td>
                   <td className="py-2 px-4">{data.name}</td>
                   <td className="py-2 px-4">{data.phone}</td>
-                  <td className="py-2 px-4">{data.amount}</td>
+                  <td className="py-2 px-4">{data.pan}</td>
+                  <td className="py-2 px-4">{data.email}</td>
                   {/* <td className="py-2 px-4 text-wrapped">{data.comment}</td> */}
                   <td className="py-2 px-4 text-center">
                     {/* <button 
@@ -92,7 +94,7 @@ const User = () => {
             <div className="flex space-x-2">
               <button
                 onClick={handlePreviousPage}
-                className={`py-1 px-4 border rounded ${currentPage === 1 ? 'bg-cyan-800 text-white cursor-not-allowed' : 'bg-cyan-500 text-black'}`}
+                className={`py-1 px-4 border rounded ${currentPage === 1 ? 'bg-cyan-800 text-black cursor-not-allowed' : 'bg-cyan-500 text-black'}`}
                 disabled={currentPage === 1}
               >
                 Previous

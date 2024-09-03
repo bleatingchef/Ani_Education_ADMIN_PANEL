@@ -11,6 +11,8 @@ import appointmentRoute from"./routes/appointmentRoute.js"
 import studentRoute from"./routes/studentRoute.js"
 import loanRoute from "./routes/loanRoute.js"
 import detailsRoute from "./routes/detailsRoute.js"
+import eligibilityRoute from "./routes/eligibilityRoute.js"
+import deleteloan from "./routes/loanRoute.js";
 
 
 dotenv.config()
@@ -39,6 +41,8 @@ app.use('/api/delete',appointmentRoute)
 app.use('/api/form',studentRoute)
 app.use('/api/loan',loanRoute)
 app.use('/api/moreDetails',detailsRoute)
+app.use('/api/eligible',eligibilityRoute)
+app.use('/api/deleteloan',deleteloan)
 
 
 const PORT = process.env.PORT||5000;
