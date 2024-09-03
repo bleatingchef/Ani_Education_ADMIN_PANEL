@@ -9,6 +9,8 @@ import cors from "cors";
 import userRoute from "./routes/userRoute.js";
 import appointmentRoute from"./routes/appointmentRoute.js"
 import studentRoute from"./routes/studentRoute.js"
+import loanRoute from "./routes/loanRoute.js"
+import detailsRoute from "./routes/detailsRoute.js"
 
 
 dotenv.config()
@@ -35,6 +37,8 @@ app.use("/api/user", userRoute);
 app.use('/api/appoint',appointmentRoute)
 app.use('/api/delete',appointmentRoute)
 app.use('/api/form',studentRoute)
+app.use('/api/loan',loanRoute)
+app.use('/api/moreDetails',detailsRoute)
 
 
 const PORT = process.env.PORT||5000;
