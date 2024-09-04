@@ -67,7 +67,7 @@ const AdminProfile = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen p-20 items-center">
+    <div className="flex justify-center bg-gradient-to-r from-purple-800 to-blue-800 min-h-screen p-20 items-center">
       <div className="p-10 pt-10 rounded-3xl outline bg-blue-800 z-40 bg-opacity-90 outline-cyan-500 shadow shadow-xl shadow-cyan-500 h-full w-full max-w-xl">
         <div className="relative flex flex-col items-center">
           <img className="w-40 h-40 outline outline-4 outline-cyan-500 shadow shadow-xl shadow-cyan-500 rounded-full object-cover mb-4" src={image} alt="Admin" />

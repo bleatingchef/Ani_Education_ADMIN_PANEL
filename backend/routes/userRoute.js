@@ -11,5 +11,6 @@ router.get('/logincheck',loginCheck);
 router.get('/getuser',protect,getuser)
 router.put('/updateUser',protect,getuser)
 router.get('/logout',logout);
+router.put('/resetpassword',logout);
 
 export default router;
