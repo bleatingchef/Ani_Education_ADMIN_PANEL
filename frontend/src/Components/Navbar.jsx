@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 import logo from "../assets/logo.png";
 import { FiUsers, FiGift, FiMenu, FiX, FiCalendar } from 'react-icons/fi';
-import { FaFolder, FaFolderOpen, FaGavel } from 'react-icons/fa';
+import { FaFolder, FaUserAlt, FaGavel, FaHome } from 'react-icons/fa'; // Importing new icons
 
 const Navbar = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
@@ -33,7 +33,7 @@ const Navbar = () => {
   };
 
   const navigateToAppointments = () => {
-    navigate('/appointments');
+    navigate('/signup');
   };
 
   const toggleSidebar = () => {
@@ -77,28 +77,31 @@ const Navbar = () => {
           </div>
         </div>
         <ul className='pt-10 space-y-4 flex flex-col items-center'>
+          {/* Dashboard */}
           <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer" onClick={() => { navigate('/home'); toggleSidebar(); }}>
-            <svg className="h-6 w-6 mr-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10 20V14H6V20H3V10H0L10 0L20 10H17V20H14V14H10Z" />
-            </svg>
+            <FaHome className="h-6 w-6 mr-2 text-white" />
             {sidebarExpanded && <span className='text-white'>Dashboard</span>}
           </li>
-          
-          <li className="flex flex-col items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer" onClick={() => { navigate('/cases'); toggleSidebar(); }}>
-            <div className="flex items-center" onClick={toggleCasesDropdown}>
-              <FaFolder className="h-6 w-6 mr-2  text-white" />
-              {sidebarExpanded && <span className='text-white'>Eligibility</span>}
-              {/* {sidebarExpanded && <FaFolderOpen className={`ml-auto ${casesDropdownOpen ? '' : 'hidden'}`} />} */}
-            </div>
+
+          {/* Eligibility */}
+          <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer" onClick={() => { navigate('/cases'); toggleSidebar(); }}>
+            <FaFolder className="h-6 w-6 mr-2 text-white" />
+            {sidebarExpanded && <span className='text-white'>Eligibility</span>}
           </li>
-          {/* <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer" onClick={() => { navigateToAppointments(); toggleSidebar(); }}>
+
+          {/* Signed Up Users */}
+          <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer" onClick={() => { navigateToAppointments(); toggleSidebar(); }}>
             <FiCalendar className="h-6 w-6 mr-2 text-white" />
-            {sidebarExpanded && <span className='text-white'>Add Student</span>}
-          </li> */}
+            {sidebarExpanded && <span className='text-white'>Signed Up Users</span>}
+          </li>
+
+          {/* Loan Application */}
           <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer " onClick={() => { navigateToMembership(); toggleSidebar(); }}>
             <FaGavel className="h-6 w-6 mr-2 text-white" />
             {sidebarExpanded && <span className='text-white'>Loan Application</span>}
           </li>
+
+          {/* Enquiry */}
           <li className="flex items-center pl-2 rounded-xl hover:shadow-lg hover:shadow-cyan-500 py-3 cursor-pointer " onClick={() => { navigateToUser(); toggleSidebar(); }}>
             <FiUsers className="h-6 w-6 mr-2 text-white" />
             {sidebarExpanded && <span className='text-white'>Enquiry</span>}

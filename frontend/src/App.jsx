@@ -11,6 +11,7 @@ import './index.css';
 import Cases from './Components/Cases';
 import Attorneys from './Components/Applications';
 import User from './Components/User';
+import SignedUP from './Components/SignedUP';
 // import AddStudentForm from './Components/AddStudentForm';
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
           <Route path='/profile' element={<AdminProfile/>}/>
           <Route path='/home' element={<Dashboard/>}/>
           <Route path='/attorneys' element={<Attorneys/>}/>
+          <Route path='/signup' element={<SignedUP/>}/>
           {/* <Route path='/appointments' element={<AddStudentForm/>}/> */}
           <Route path='/cases' element={<Cases/>}/>
 

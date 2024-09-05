@@ -71,7 +71,7 @@ const User = () => {
                 <tr key={index} className='border border-cyan-500 text-white'>
                   <td className="py-5 px-4 text-center">{startIndex + index + 1}</td>
                   <td className="py-2 px-4">{data.name}</td>
-                  <td className="py-2 px-4">{data.phone}</td>
+                  <td className="py-2 px-4">{data.mobile}</td>
                   <td className="py-2 px-4">{data.amount}</td>
                   {/* <td className="py-2 px-4 text-wrapped">{data.comment}</td> */}
                   <td className="py-2 px-4 text-center">
