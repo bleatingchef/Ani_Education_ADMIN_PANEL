@@ -32,17 +32,6 @@ const GrowthTrainers = () => {
     ],
   };
 
-  // const earningThisMonthData = {
-  //   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  //   datasets: [
-  //     {
-  //       label: 'Earnings',
-  //       data: [3000, 5000, 4000, 7000, 8000, 6000, 7000],
-  //       borderColor: 'rgba(255, 99, 132, 1)',
-  //       backgroundColor: 'rgba(255, 99, 132, 0.2)',
-  //     },
-  //   ],
-  // };
   const earningThisMonthData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [

@@ -22,19 +22,6 @@ const User = () => {
       });
   }, []);
 
-  // const handleDelete = (email) => {
-  //   axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/delete/deleteUser`, {
-  //     data: { email }
-  //   })
-  //     .then(response => {
-  //       setData(data.filter(contact => contact.email !== email));
-  //       toast.success("Contact deleted successfully");
-  //     })
-  //     .catch(error => {
-  //       console.error('Error deleting item:', error);
-  //       toast.error("Error deleting contact");
-  //     });
-  // };
 
   const handlePreviousPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
